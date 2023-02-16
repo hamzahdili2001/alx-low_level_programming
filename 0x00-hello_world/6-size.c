@@ -2,8 +2,8 @@
 
 /**
 * main - runs the program
-* Description: prints the  size of types in computer
-* Return : 0
+*
+* Return: 0
 */
 
 int main(void)
