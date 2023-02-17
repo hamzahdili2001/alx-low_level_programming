@@ -21,7 +21,7 @@ int main(void)
 			if (i != 12 && i != 102 && i != 120
 			    && i != 201 && i != 210)
 			{
-				if (i != 123)
+				if (i != 000)
 				{
 					putchar(',');
 					putchar(' ');
@@ -32,6 +32,7 @@ int main(void)
 			putchar(d3 + '0');
 		}
 	}
+
 	putchar(10);
 	return (0);
 }
