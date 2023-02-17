@@ -16,21 +16,22 @@ int main(void)
 		d1 = i / 100;
 		d2 = (i / 10) % 10;
 		d3 = i % 10;
-
-		if (i != 12 && 1 != 102 && i != 120 && i != 101
-			 && i != 210)
+		if (d1 < d2 && d2 < d3)
 		{
-			if (i != 123)
+			if (i != 12 && i != 102 && i != 120
+			    && i != 201 && i != 210)
 			{
-				putchar(',');
-				putchar(' ');
+				if (i != 123)
+				{
+					putchar(',');
+					putchar(' ');
+				}
 			}
+			putchar(d1 + '0');
+			putchar(d2 + '0');
+			putchar(d3 + '0');
 		}
-		putchar(d1 + '0');
-		putchar(d2 + '0');
-		putchar(d3 + '0');
 	}
-
 	putchar(10);
 	return (0);
 }
