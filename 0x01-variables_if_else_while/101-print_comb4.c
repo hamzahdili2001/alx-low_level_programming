@@ -7,38 +7,30 @@
  */
 int main(void)
 {
-	int i, e, g;
+	int i;
 
-	i = 48;
-	e = 48;
-	g = 48;
-
-	while (e < 58)
+	for (i = 0; i < 1000; i++)
 	{
-		i = 48;
-		while (i < 58)
+		int d1,d2,d3;
+
+		d1 = i / 100;
+		d2 = (i / 10) % 10;
+		d3 = i % 10;
+
+		if (i != 12 && 1 != 102 && i != 120 && i != 101
+			 && i != 210)
 		{
-			g = 48;
-			while (g < 58)
+			if (i != 123)
 			{
-				if (e != i && e != g && i != g && e < i && i < g)
-				{
-					putchar(e);
-					putchar(i);
-					putchar(g);
-					if (i == 56 && e == 55 && g == 57)
-					{
-						break;
-					}
-					putchar(',');
-					putchar(' ');
-				}
-				g++;
+				putchar(',');
+				putchar(' ');
 			}
-			i++;
 		}
-		e++;
+		putchar(d1 + '0');
+		putchar(d2 + '0');
+		putchar(d3 + '0')
 	}
+
 	putchar(10);
 	return (0);
 }
