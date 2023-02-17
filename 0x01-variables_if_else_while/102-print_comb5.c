@@ -1,49 +1,36 @@
 #include <stdio.h>
 
 /**
- * main - the program start
- * Description: Prints numbers between 00 to 99
+ * main - runs the program
+ * Desription: form 012 - 789 with commas
  * Return: 0
  */
-
 int main(void)
 {
-int i, e, g, h, op1, op2;
+	int i;
 
-i = e = g = h = 48;
-while (h < 58)
-{
-	g = 48;
-	while (g < 58)
+	for (i = 0; i < 1000; i++)
 	{
-		e = 48;
-		while (e < 58)
+		int d1,d2,d3;
+
+		d1 = i / 100;
+		d2 = (i / 10) % 10;
+		d3 = i % 10;
+
+		if (i != 12 && 1 != 102 && i != 120 && i != 101
+			 && i != 210)
 		{
-			i = 48;
-			while (i < 58)
+			if (i != 123)
 			{
-				op1 = (h * 10) + g;
-				op2 = (e * 10) + i;
-				if (op1 < op2)
-				{
-					putchar(h);
-					putchar(g);
-					putchar(' ');
-					putchar(e);
-					putchar(i);
-					if (h == 57 && g == 56 && e == 57 && i == 57)
-						break;
-					putchar(',');
-					putchar(' ');
-				}
-				i++;
+				putchar(',');
+				putchar(' ');
 			}
-			e++;
 		}
-		g++;
+		putchar(d1 + '0');
+		putchar(d2 + '0');
+		putchar(d3 + '0');
 	}
-	h++;
-}
-putchar(10);
-return (0);
+
+	putchar(10);
+	return (0);
 }
