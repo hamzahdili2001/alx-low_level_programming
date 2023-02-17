@@ -18,7 +18,7 @@ int product = a * b;
 int quotient = a / b;
 int remainder = a % b;
 
-##Logical Operators
+## Logical Operators
 
 Logical operators, also known as boolean operators, are used to perform logical operations in C. These include:
 - AND (&&)
@@ -32,7 +32,7 @@ if (a > b && b > c) {
     printf("a is greater than b and b is greater than c\n");
 }
 
-##Relational Operators
+## Relational Operators
 
 Relational operators are used to compare two values in C. These include:
 - Greater than (>)
@@ -49,7 +49,7 @@ if (a > b) {
     printf("a is greater than b\n");
 }
 
-##TRUE and FALSE Values
+## TRUE and FALSE Values
 
 In C, any non-zero value is considered TRUE, and zero is considered FALSE.
 
