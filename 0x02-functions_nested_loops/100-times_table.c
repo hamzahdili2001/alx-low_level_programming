@@ -32,7 +32,7 @@ void print_times_table(int n)
 				}
 				else
 				{
-					printf(",%3d", result);
+					printf(",%4d", result);
 				}
 			}
 			printf("\n");
