@@ -1,12 +1,12 @@
 #include "main.h"
 
 /**
- * main - starts the program
+ * print_alphabet - Function
  * Description: print alphabet from a - z
  * Return: 0
 */
 
-int main(void)
+void print_alphabet(void)
 {
 
 	/* 97 to 122 */
@@ -20,6 +20,5 @@ int main(void)
 
 	_putchar(10);
 
-	return (0);
 }
 
