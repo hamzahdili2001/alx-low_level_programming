@@ -2,7 +2,7 @@
 
 /**
  * main - Function
- * Description: first 50 fibonacci numbers
+ * Description: Nature made the natural numbers; All else is the work of women
  * Return: 0
  */
 
