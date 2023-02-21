@@ -7,24 +7,23 @@
 
 int main(void)
 {
-	int a, b, c, i, n;
+	int c;
 
-	a = 1;
-	b = 2;
-	n = 50;
+	long int n1, n2, fn;
 
-	printf("%d, %d", a, b);
+	n1 = 1;
+	n2 = 2;
 
-	for (i = 3; i <= n; i++)
+	printf("%ld, %ld", n1, n2);
+
+	for (c = 0; c < 48; c++)
 	{
-		c = a + b;
-
-
-		printf(", %d", c);
-
-		a = b;
-		b = c;
+		fn = n1 + n2;
+		printf(", %ld", fn);
+		n1 = n2;
+		n2 = fn;
 	}
+
 	printf("\n");
 	return (0);
 }
