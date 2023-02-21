@@ -7,14 +7,15 @@
 
 int main(void)
 {
-	int a, b, c, i;
+	int a, b, c, i, n;
 
 	a = 1;
 	b = 2;
+	n = 50;
 
-	printf("%d, %d,", a, b);
+	printf("%d, %d", a, b);
 
-	for (i = 3; i <= 50; i++)
+	for (i = 3; i <= n; i++)
 	{
 		c = a + b;
 
