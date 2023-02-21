@@ -10,9 +10,19 @@ void print_to_98(int n)
 {
 	int start;
 
-	for (start = n; start <= 98; start++)
+	if (n >= 0 || n <= 0)
 	{
-		printf("%d, ", start);
+		for (start = n; start <= 98; start++)
+		{
+			printf("%d, ", start);
+		}
+	}
+	else if (n >= 98)
+	{
+		for (start = n; start >= 98; start--)
+		{
+			printf("%d, ", start);
+		}
 	}
 	putchar(10);
 }
