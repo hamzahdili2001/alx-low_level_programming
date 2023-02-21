@@ -8,7 +8,7 @@
 
 int main(void)
 {
-	long int prev, curr, sum;
+	long int prev, curr, sum, next;
 
 	prev = 1;
 	curr = 2;
@@ -20,7 +20,6 @@ int main(void)
 		{
 			sum += curr;
 		}
-		int next;
 
 		next = prev + curr;
 
