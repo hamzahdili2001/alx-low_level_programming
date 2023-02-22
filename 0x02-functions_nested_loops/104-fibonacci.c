@@ -1,5 +1,5 @@
 #include <stdio.h>
-
+#define MODULO 1000000000
 /**
  * main - Function
  * Description: print the first 98 Fibonacci numbers
@@ -19,7 +19,7 @@ int main(void)
 		{
 			break;
 		}
-		else if (currentFibonacci < 1000000000)
+		else if (currentFibonacci < MODULO)
 		{
 			nextFibonacci = previousFibonacci + currentFibonacci;
 			printf(", %ld", nextFibonacci);
@@ -30,9 +30,8 @@ int main(void)
 		else
 		{
 
-			long int carry = (previousFibonacci + currentFibonacci) / 1000000000;
-			long int nextLowerPart = (previousFibonacci + currentFibonacci)
-			% 1000000000;
+			long int carry = (previousFibonacci + currentFibonacci) / MODULO;
+			long int nextLowerPart = (previousFibonacci + currentFibonacci) % MODULO;
 
 			nextFibonacci = currentFibonacci + carry;
 			printf(", %ld%09ld", nextFibonacci, nextLowerPart);
