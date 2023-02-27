@@ -34,11 +34,12 @@ void puts_half(char *str)
 {
 	int length, i;
 
-	length = get_length(str) / 2;
+	length = get_length(str) + 1;
 
-	for (i = length; i < get_length(str); i++)
+	for (i = length / 2; i < length; i++)
 	{
 		_putchar(*(str + i));
 	}
 	_putchar(10);
 }
+
