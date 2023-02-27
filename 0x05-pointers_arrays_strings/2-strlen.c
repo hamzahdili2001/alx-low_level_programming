@@ -10,15 +10,11 @@ int _strlen(char *s)
 {
 	unsigned int length;
 	
-	if ((*s + 0) != '\0')
+	while (*(s + length) != '\0')
 	{
-		while (*(s + length) != '\0')
-		{
-			length++;
-		}
-
-		return (length);
+		length++;
 	}
-	return (0);
+
+	return (length);
 }
 
