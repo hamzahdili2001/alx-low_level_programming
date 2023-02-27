@@ -8,9 +8,9 @@
 
 int _strlen(char *s)
 {
-	unsigned long int length;
+	unsigned int length;
 	
-	if ((*s + 0) != '\n')
+	if ((*s + 0) != '\0')
 	{
 		while (*(s + length) != '\0')
 		{
@@ -19,7 +19,6 @@ int _strlen(char *s)
 
 		return (length);
 	}
-	else
-		return (0);
+	return (0);
 }
 
