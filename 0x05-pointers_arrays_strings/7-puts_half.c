@@ -1,28 +1,5 @@
 #include "main.h"
 
-
-/**
- * get_length - Gets the length of String
- * @str: the string
- * Return: length of str
-*/
-
-int get_length(char *str)
-{
-	unsigned int length;
-
-	length = 0;
-
-
-	while (*(str + length) != '\0')
-	{
-		length++;
-	}
-	return (length);
-}
-
-
-
 /**
  * puts_half - prints half of a string
  * @str: string given
@@ -32,24 +9,21 @@ int get_length(char *str)
 
 void puts_half(char *str)
 {
-	int length, i;
+	int count = 0, i;
 
-	length = get_length(str) + 1;
-
-	if (length % 2 == 0)
+	while (count >= 0)
 	{
-		for (i = length / 2; i <= length; i++)
-		{
-			_putchar(*(str + i));
-		}
+		if (str[count] == '\0')
+			break;
+		count++;
 	}
+
+	if (count % 2 == 1)
+		i = count / 2;
 	else
-	{
-		for (i = (length - 1) / 2; i <= length; i++)
-		{
-			_putchar(*(str + i));
-		}
-	}
-	_putchar(10);
-}
+		i = (count - 1) / 2;
 
+	for (i++; i < count; i++)
+		_putchar(str[i]);
+	_putchar('\n');
+}
