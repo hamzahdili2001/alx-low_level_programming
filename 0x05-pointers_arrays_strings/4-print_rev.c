@@ -32,7 +32,7 @@ void print_rev(char *s)
 
 	count = get_length(s);
 
-	while (count != -1)
+	while (count != 0)
 	{
 		_putchar(*(s + count));
 
