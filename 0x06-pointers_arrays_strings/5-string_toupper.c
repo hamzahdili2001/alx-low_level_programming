@@ -6,17 +6,15 @@
 
 char *string_toupper(char *lower)
 {
-	int i;
+	int i = 0;
 
-	i = 0;
-	while (*(lower + i) != '\n')
+	while (*(lower + i))
 	{
 		if ((*(lower + i) >= 'a') && (*(lower + i) <= 'z'))
-			/* any lower ASCII value - 32 will be upper*/
 			*(lower + i) -= 32;
 		i++;
 	}
 
-	return (lower); /*Return lower as upper*/
+	return (lower);
 }
 
