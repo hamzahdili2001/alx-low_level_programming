@@ -1,5 +1,3 @@
-#include "main.h"
-
 /**
  * string_toupper - convert string to uppercase
  * @lower: the lower stirng given
@@ -16,6 +14,9 @@ char *string_toupper(char *lower)
 		if ((*(lower + i) >= 97) && (*(lower + i) <= 122))
 			/* any lower ASCII value - 32 will be upper*/
 			*(lower + i) = *(lower + i) - 32;
+		else
+			*(lower + i) = *(lower + i);
+		
 		i++;
 	}
 	*(lower + i) = '\n';
