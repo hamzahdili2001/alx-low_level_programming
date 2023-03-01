@@ -14,12 +14,9 @@ char *string_toupper(char *lower)
 		if ((*(lower + i) >= 97) && (*(lower + i) <= 122))
 			/* any lower ASCII value - 32 will be upper*/
 			*(lower + i) = *(lower + i) - 32;
-		else
-			*(lower + i) = *(lower + i);
-		
 		i++;
 	}
-	*(lower + i) = '\n';
+
 	return (lower); /*Return lower as upper*/
 }
 
