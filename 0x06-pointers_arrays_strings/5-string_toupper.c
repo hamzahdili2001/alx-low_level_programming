@@ -8,8 +8,9 @@
 
 char *string_toupper(char *lower)
 {
-	int i = 0;
+	int i;
 
+	i = 0;
 	while (*(lower + i) != '\n')
 	{
 		if ((*(lower + i) >= 97) && (*(lower + i) <= 122))
@@ -17,6 +18,7 @@ char *string_toupper(char *lower)
 			*(lower + i) = *(lower + i) - 32;
 		i++;
 	}
+	*(lower + i) = '\n';
 	return (lower); /*Return lower as upper*/
 }
 
