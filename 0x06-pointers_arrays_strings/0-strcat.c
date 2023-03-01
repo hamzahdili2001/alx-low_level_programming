@@ -42,7 +42,7 @@ char *_strcat(char *dest, char *src)
 
 		i++;
 	}
-	*(dest + dest_length) += '\0';
+	*(dest + dest_length + 1) += '\0';
 
 	return (dest);
 
