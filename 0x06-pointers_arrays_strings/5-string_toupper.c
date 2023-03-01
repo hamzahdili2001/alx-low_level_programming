@@ -11,9 +11,9 @@ char *string_toupper(char *lower)
 	i = 0;
 	while (*(lower + i) != '\n')
 	{
-		if ((*(lower + i) >= 97) && (*(lower + i) <= 122))
+		if ((*(lower + i) >= 'a') && (*(lower + i) <= 'z'))
 			/* any lower ASCII value - 32 will be upper*/
-			*(lower + i) = *(lower + i) - 32;
+			*(lower + i) -= 32;
 		i++;
 	}
 
