@@ -8,14 +8,13 @@
 
 char *string_toupper(char *lower)
 {
-	int i;
+	int i = 0;
 
 	while (*(lower + i) != '\n')
 	{
-		if (*(lower + i) >= 97 && *(lower + i) <= 122)
-		{
+		if ((*(lower + i) >= 97) && (*(lower + i) <= 122))
+			/* any lower ASCII value - 32 will be upper*/
 			*(lower + i) = *(lower + i) - 32;
-		}
 		i++;
 	}
 	return (lower); /*Return lower as upper*/
