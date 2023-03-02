@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <ctype.h>
 
 /**
  * print_buffer - prints the content of a buffer
@@ -10,42 +9,34 @@
  */
 void print_buffer(char *b, int size)
 {
-	int i;
-	int j;
+	int i = 0, j = 0, count = 0;
 
-	if (size <= 0)
+	while (j < size)
 	{
-		printf("\n");
-		return;
-	}
-
-	for (i = 0; i < size; i += 10)
-	{
-		printf("%08x: ", i);
-	for (j = i; j < i + 10; j += 2)
-	{
-		if (j < size)
-			printf("%02x", b[j]);
-		else
-			printf("  ");
-		if (j + 1 < size)
-			printf("%02x ", b[j + 1]);
-		else
-			printf("   ");
-	}
-	for (j = i; j < i + 10; j++)
-	{
-		if (j < size)
-		{
-			if (isprint(b[j]))
-				printf("%c", b[j]);
-			else
-				printf(".");
-		}
-		else
-			printf(" ");
+		printf("000000%02x: ", j);
+		count = 0;
+			while (count < 10)
+			{
+				if (i >= size)
+					printf("  ");
+				else
+					printf("%02x", *(b + i));
+				if (i % 2 != 0)
+					printf(" ");
+				i++;
+				count++;
+			}
+			i -= 10;
+			count = 0;
+			while (count < 10 && i < size)
+			{
+				printf("%c", *(b + i) > 31 && *(b + i) < 127 ? *(b + i) : '.');
+				count++;
+				i++;
+			}
+			if (j < size - 10)
+				printf("\n");
+		j += 10;
 	}
 	printf("\n");
-	}
 }
-
