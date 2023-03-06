@@ -2,7 +2,7 @@
 
 /**
  * _memset - functions like memset
- * @s: string given 
+ * @s: string given
  * @b: buffer
  * @n: numbers of bytes
  * Return: pointer to the memory area s
