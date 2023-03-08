@@ -9,7 +9,6 @@ void _print_rev_recursion(char *str)
 {
 	if (*str == '\0')
 	{
-		_putchar('\n');
 		return;
 	}
 
