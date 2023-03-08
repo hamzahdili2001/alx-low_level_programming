@@ -1,20 +1,4 @@
-
-/**
- * _strlen - get length of string
- * @s: string
- * Return: length of s
-*/
-
-int _strlen(char *s)
-{
-	int i = 0;
-
-	while (*(s + i))
-	{
-		i++;
-	}
-	return (i);
-}
+#include <string.h>
 /**
  * is_palindrome_helper - recursive helper function for is_palindrome
  * @s: the string to check
@@ -42,7 +26,7 @@ int is_palindrome_helper(char *s, int start, int end)
  */
 int is_palindrome(char *s)
 {
-	int len = _strlen(s);
+	int len = strlen(s);
 
 	if (len <= 1)
 		return (1);
