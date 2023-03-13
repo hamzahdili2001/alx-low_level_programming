@@ -39,7 +39,7 @@ char *argstostr(int ac, char **av)
 	for (i = 0; i < ac; i++)
 		len += getStrLen(av[i]) + 1;
 
-	_string = malloc(sizeof(char) * len);
+	_string = malloc(sizeof(char) * len + 1);
 
 	if (_string == NULL)
 		return (NULL);
