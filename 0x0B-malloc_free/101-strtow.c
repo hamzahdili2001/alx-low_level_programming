@@ -1,96 +1,81 @@
 #include <stdlib.h>
 /**
- * is_space - checks if a given character is a space, tab or newline
- * @c: character
- * Return: true or false
-*/
-int is_space(char c)
-{
-	return (c == ' ' || c == '\t' || c == '\n');
-}
-/**
-* count_words - counts the words of a string
-* @str: string
-* Return: count of that string
-*/
+ * count_words - Count the number of words in a string.
+ * @str: The string to count words in.
+ *
+ * Return: The number of words in the string.
+ */
 int count_words(char *str)
 {
-	int count = 0;
+	int count = 0, i = 0;
 
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		if (!is_space(*str))
-		{
-			count++;
-			while (!is_space(*str) && *str != '\0')
-				str++;
-		}
-		str++;
+		/* Skip whitespace at the beginning of each word. */
+		while (str[i] == ' ')
+		i++;
+
+		/*
+		 * Count the current word if we've reached the
+		 * end of the whitespace.
+		*/
+		if (str[i] != '\0')
+		count++;
+
+		/* Move to the end of the current word. */
+		while (str[i] != ' ' && str[i] != '\0')
+		i++;
 	}
 
 	return (count);
 }
 /**
- * word_length - count the length of string
- * @str: string
- * Return: length of string
-*/
-int word_length(char *str)
-{
-	int length = 0;
-
-	while (!is_space(*str) && *str != '\0')
-	{
-		length++;
-		str++;
-	}
-	return (length);
-}
-/**
- * strtow - splits strings into words
- * @str: string
- * Return: splited stirngs
-*/
+ * strtow - Split a string into words.
+ * @str: The string to split.
+ *
+ * Return: A pointer to an array of strings, or NULL if an error occurs.
+ */
 char **strtow(char *str)
 {
+	int i, j, k, len;
 	char **words;
-	int i, j, k, n;
 
-	if (str == NULL || *str == '\0')
+	if (str == NULL || str[0] == '\0')
 		return (NULL);
-	n = count_words(str);
-	words = malloc(sizeof(char *) * (n + 1));
+	/* Allocate memory for the array of words. */
+	words = malloc((count_words(str) + 1) * sizeof(char *));
 	if (words == NULL)
 		return (NULL);
 	i = 0;
-	while (*str != '\0')
+	while (str[i] != '\0')
 	{
-		if (!is_space(*str))
+		/* Skip whitespace at the beginning of each word. */
+		while (str[i] == ' ')
+		i++;
+		/* Build the current word. */
+		len = 0;
+		while (str[i + len] != ' ' && str[i + len] != '\0')
+			len++;
+		/* Allocate memory for the current word. */
+		words[j] = malloc((len + 1) * sizeof(char));
+		if (words[j] == NULL)
 		{
-			words[i] = malloc(sizeof(char) * (word_length(str) + 1));
-			if (words[i] == NULL)
-			{
-				for (j = 0; j < i; j++)
-				{
-					free(words[j]);
-					free(words);
-					return (NULL);
-				}
-			}
-			k = 0;
-			while (!is_space(*str) && *str != '\0')
-			{
-				words[i][k] = *str;
-				k++;
-				str++;
-			}
-			words[i][k] = '\0';
-			i++;
+			/* Free memory for any words that have already been allocated.*/
+			for (k = 0; k < j; k++)
+			free(words[k]);
+			free(words);
+			return (NULL);
 		}
-		else
-			str++;
+		/* Copy the current word into the array. */
+		for (k = 0; k < len; k++)
+			words[j][k] = str[i + k];
+		words[j][k] = '\0';
+		/* Move to the next word. */
+		i += len;
+		j++;
 	}
-	words[i] = NULL;
+	/* Add the NULL terminator to the end of the array. */
+	words[j] = NULL;
 	return (words);
 }
 
