@@ -1,18 +1,22 @@
 #include <stdlib.h>
+
 /**
  * is_space - checks if a given character is a space, tab or newline
  * @c: character
+ *
  * Return: true or false
-*/
+ */
 int is_space(char c)
 {
 	return (c == ' ' || c == '\t' || c == '\n');
 }
+
 /**
-* count_words - counts the words of a string
-* @str: string
-* Return: count of that string
-*/
+ * count_words - counts the words of a string
+ * @str: string
+ *
+ * Return: count of that string
+ */
 int count_words(char *str)
 {
 	int count = 0;
@@ -30,11 +34,13 @@ int count_words(char *str)
 
 	return (count);
 }
+
 /**
  * word_length - count the length of string
  * @str: string
+ *
  * Return: length of string
-*/
+ */
 int word_length(char *str)
 {
 	int length = 0;
@@ -46,11 +52,13 @@ int word_length(char *str)
 	}
 	return (length);
 }
+
 /**
  * strtow - splits strings into words
  * @str: string
+ *
  * Return: splited stirngs
-*/
+ */
 char **strtow(char *str)
 {
 	char **words;
@@ -91,6 +99,7 @@ char **strtow(char *str)
 			str++;
 	}
 	words[i] = NULL;
+
 	return (words);
 }
 
