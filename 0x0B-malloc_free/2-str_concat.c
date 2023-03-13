@@ -31,9 +31,9 @@ char *str_concat(char *s1, char *s2)
 	unsigned int i, sizeOfNewStr, j;
 
 	if (s1 == NULL || s2 == NULL)
-		return (NULL);
+		return ("");
 
-	newStr = malloc(size * sizeof(char) + 1);
+	newStr = malloc((size * sizeof(s1[0])) + 1);
 
 	for (i = 0; i < sizeOfStr(s1); i++)
 	{
