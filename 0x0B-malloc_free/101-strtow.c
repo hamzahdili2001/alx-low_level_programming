@@ -71,9 +71,11 @@ char **strtow(char *str)
 			if (words[i] == NULL)
 			{
 				for (j = 0; j < i; j++)
+				{
 					free(words[j]);
 					free(words);
 					return (NULL);
+				}
 			}
 			k = 0;
 			while (!is_space(*str) && *str != '\0')
