@@ -26,14 +26,23 @@ size_t sizeOfStr(char *string)
 
 char *str_concat(char *s1, char *s2)
 {
-	size_t size = sizeOfStr(s1) + sizeOfStr(s2);
+	size_t size;
 	char *newStr;
 	unsigned int i, sizeOfNewStr, j;
 
-	if (s1 == NULL || s2 == NULL)
-		return ("");
+	if (s1 == NULL)
+		s1 = "";
+	if (s2 == NULL)
+		s2 = "";
+
+	size = sizeOfStr(s1) + sizeOfStr(s2);
 
 	newStr = malloc((size * sizeof(s1[0])) + 1);
+	if (newStr == NULL)
+	{
+		free(newStr);
+		return (NULL);
+	}
 
 	for (i = 0; i < sizeOfStr(s1); i++)
 	{
