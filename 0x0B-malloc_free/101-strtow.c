@@ -6,7 +6,7 @@
 */
 int is_space(char c)
 {
-	return (c == " " || c == '\t' || c == '\n');
+	return (c == ' ' || c == '\t' || c == '\n');
 }
 /**
 * count_words - counts the words of a string
