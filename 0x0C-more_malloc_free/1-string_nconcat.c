@@ -4,7 +4,6 @@
  * @str: stirng
  * Return: length of a string
 */
-
 size_t getLengthForMe(char *str)
 {
 	size_t i = 0;
@@ -61,7 +60,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		n = len2;
 	}
-	myLove = malloc((len1 + 1) * sizeof(char));
+	myLove = malloc((len1 + n + 1));
 
 	if (myLove == NULL)
 	{
