@@ -24,8 +24,11 @@ int getLengthForMe(char *str)
 */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int len1 = getLengthForMe(s1), len2 = getLengthForMe(s2), i;
+	unsigned int len1, len2, i;
 	char *myLove;
+
+	len1 = getLengthForMe(s1);
+	len2 = getLengthForMe(s2);
 
 	if (s1 == NULL)
 		return ("");
