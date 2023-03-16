@@ -1,21 +1,6 @@
 #include <stddef.h>
 #include <stdlib.h>
 /**
- * getLengthForMe - man strlen
- * @str: stirng
- * Return: length of a string
-*/
-
-int getLengthForMe(char *str)
-{
-	int i = 0;
-
-	while (*(str + i))
-		i++;
-	return (i);
-}
-
-/**
  * string_nconcat - result of a non discriptive task
  * @s1: string
  * @s2: also string
@@ -27,14 +12,17 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int len1, len2, i;
 	char *myLove;
 
-	len1 = getLengthForMe(s1);
-	len2 = getLengthForMe(s2);
-
 	if (s1 == NULL)
 		return ("");
 
 	if (s2 == NULL)
 		return ("");
+
+	for (len1 = 0; s1[len1] != '\0'; len1++)
+		;
+
+	for (len2 = 0; s2[len2] != '\0'; len2++)
+		;
 
 	if (n > len2)
 	{
