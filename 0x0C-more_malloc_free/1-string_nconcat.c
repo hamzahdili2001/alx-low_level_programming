@@ -1,31 +1,17 @@
 #include <stdlib.h>
 /**
- * getLengthForMe - man strlen
- * @str: stirng
- * Return: length of a string
-*/
-int getLengthForMe(char *str)
-{
-	int i = 0;
-
-	while (*(str + i))
-		i++;
-	return (i);
-}
-/**
- * string_nconcat - result of a non discriptive task
- * @s1: string
- * @s2: also string
- * @n: a number of bytes I DONT KNOW that's what in the discriptive task
- * Return: string_nconcat like you said
-*/
+ * string_nconcat - concatenates two strings.
+ * @s1: first string.
+ * @s2: second string.
+ * @n: amount of bytes.
+ *
+ * Return: pointer to the allocated memory.
+ * if malloc fails, status value is equal to 98.
+ */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1, len2, i;
-	char *myLove;
-
-	len1 = getLengthForMe(s1);
-	len2 = getLengthForMe(s2);
+	char *sout;
+	unsigned int ls1, ls2, lsout, i;
 
 	if (s1 == NULL)
 		s1 = "";
@@ -33,25 +19,29 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (s2 == NULL)
 		s2 = "";
 
-	if (n > len2)
-	{
-		n = len2;
-	}
-	myLove = malloc((len1 + n) + 1);
+	for (ls1 = 0; s1[ls1] != '\0'; ls1++)
+		;
 
-	if (myLove == NULL)
-	{
+	for (ls2 = 0; s2[ls2] != '\0'; ls2++)
+		;
+
+	if (n > ls2)
+		n = ls2;
+
+	lsout = ls1 + n;
+
+	sout = malloc(lsout + 1);
+
+	if (sout == NULL)
 		return (NULL);
-	}
 
-	for (i = 0; i < (len1 + n); i++)
-		if (i < len1)
-			myLove[i] = s1[i];
+	for (i = 0; i < lsout; i++)
+		if (i < ls1)
+			sout[i] = s1[i];
 		else
-			myLove[i] = s2[i - len1];
+			sout[i] = s2[i - ls1];
 
-	myLove[i] = '\0';
+	sout[i] = '\0';
 
-	return (myLove);
+	return (sout);
 }
-
