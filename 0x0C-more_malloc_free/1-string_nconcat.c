@@ -48,6 +48,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			myLove[i] = s1[i];
 		else
 			myLove[i] = s2[i - len1];
+	myLove[i] = '\0';
 	return (myLove);
 }
 
