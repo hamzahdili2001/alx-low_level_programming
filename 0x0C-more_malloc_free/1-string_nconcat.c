@@ -6,9 +6,9 @@
  * Return: length of a string
 */
 
-size_t getLengthForMe(char *str)
+int getLengthForMe(char *str)
 {
-	size_t i = 0;
+	int i = 0;
 
 	while (*(str + i))
 		i++;
@@ -24,7 +24,7 @@ size_t getLengthForMe(char *str)
 */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	size_t len1 = getLengthForMe(s1), len2 = getLengthForMe(s2), i;
+	int len1 = getLengthForMe(s1), len2 = getLengthForMe(s2), i;
 	char *myLove;
 
 	if (s1 == NULL)
