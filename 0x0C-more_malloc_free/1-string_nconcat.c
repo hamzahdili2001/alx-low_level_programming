@@ -68,7 +68,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	copyStrForMe(myLove, s1, len1);
 	copyStrForMe(myLove + len1, s2, n);
-	myLove[len1 + n] = '\0';
+	myLove[len1 + n + 1] = '\0';
 
 	return (myLove);
 }
