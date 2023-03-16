@@ -13,32 +13,6 @@ int getLengthForMe(char *str)
 	return (i);
 }
 /**
- *	copyStrForMe - man strncpy
- * @dest: destination
- * @src: source
- * @n: max chars to copy
- * Return: concatinated strings
-*/
-char *copyStrForMe(char *dest, const char *src, int n)
-{
-	char *ptr = dest;
-	int i;
-
-	for (i = 0; i < n && *src != '\0'; i++)
-	{
-		*ptr++ = *src++;
-	}
-
-	while (i < n)
-	{
-		*ptr++ = '\0';
-		i++;
-	}
-	return (dest);
-}
-
-
-/**
  * string_nconcat - result of a non discriptive task
  * @s1: string
  * @s2: also string
@@ -47,7 +21,7 @@ char *copyStrForMe(char *dest, const char *src, int n)
 */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1, len2;
+	unsigned int len1, len2, i;
 	char *myLove;
 
 	len1 = getLengthForMe(s1);
@@ -70,9 +44,13 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	}
 
-	copyStrForMe(myLove, s1, len1);
-	copyStrForMe(myLove + len1, s2, n);
-	myLove[len1 + n] = '\0';
+	for (i = 0; i < (len1 + n); i++)
+		if (i < len1)
+			myLove[i] = s1[i];
+		else
+			myLove[i] = s2[i - len1];
+
+	myLove[i] = '\0';
 
 	return (myLove);
 }
