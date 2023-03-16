@@ -1,5 +1,44 @@
-#include <stddef.h>
 #include <stdlib.h>
+/**
+ * getLengthForMe - man strlen
+ * @str: stirng
+ * Return: length of a string
+*/
+
+size_t getLengthForMe(char *str)
+{
+	size_t i = 0;
+
+	while (*(str + i))
+		i++;
+	return (i);
+}
+/**
+ *	copyStrForMe - man strncpy
+ * @dest: destination
+ * @src: source
+ * @n: max chars to copy
+ * Return: concatinated strings
+*/
+char *copyStrForMe(char *dest, const char *src, size_t n)
+{
+	char *ptr = dest;
+	size_t i;
+
+	for (i = 0; i < n && *src != '\0'; i++)
+	{
+		*ptr++ = *src++;
+	}
+
+	while (i < n)
+	{
+		*ptr++ = '\0';
+		i++;
+	}
+	return (dest);
+}
+
+
 /**
  * string_nconcat - result of a non discriptive task
  * @s1: string
@@ -9,37 +48,30 @@
 */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	unsigned int len1, len2, i;
+	size_t len1 = getLengthForMe(s1), len2 = getLengthForMe(s2);
 	char *myLove;
 
 	if (s1 == NULL)
-		return ("");
+		s1 = "";
 
 	if (s2 == NULL)
-		return ("");
+		s2 = "";
 
-	for (len1 = 0; s1[len1] != '\0'; len1++)
-		;
-
-	for (len2 = 0; s2[len2] != '\0'; len2++)
-		;
-
-	if (n > len2)
+	if (n >= len2)
 	{
 		n = len2;
 	}
-
-	myLove = malloc((len1 + n) + 1);
+	myLove = malloc((len1 + 1) * sizeof(char));
 
 	if (myLove == NULL)
+	{
 		return (NULL);
+	}
 
-	for (i = 0; i < (len1 + n); i++)
-		if (i < len1)
-			myLove[i] = s1[i];
-		else
-			myLove[i] = s2[i - len1];
-	myLove[i] = '\0';
+	copyStrForMe(myLove, s1, len1);
+	copyStrForMe(myLove + len1, s2, n);
+	myLove[len1 + n] = '\0';
+
 	return (myLove);
 }
 
