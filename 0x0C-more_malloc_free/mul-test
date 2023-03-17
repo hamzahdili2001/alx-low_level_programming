@@ -1,0 +1,148 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+#define INITIAL_CAPACITY 10
+#define GROWTH_FACTOR 2
+
+typedef struct {
+    int *digits;
+    int num_digits;
+    int capacity;
+} BigInt;
+
+void init_bigint(BigInt *b) {
+    b->digits = malloc(INITIAL_CAPACITY * sizeof(int));
+    b->num_digits = 0;
+    b->capacity = INITIAL_CAPACITY;
+}
+
+void destroy_bigint(BigInt *b) {
+    free(b->digits);
+}
+
+void grow_bigint(BigInt *b) {
+    b->capacity *= GROWTH_FACTOR;
+    b->digits = realloc(b->digits, b->capacity * sizeof(int));
+}
+
+void add_digit_to_bigint(BigInt *b, int digit) {
+    if (b->num_digits >= b->capacity) {
+        grow_bigint(b);
+    }
+    b->digits[b->num_digits] = digit;
+    b->num_digits++;
+}
+
+void add_bigint_to_bigint(BigInt *a, const BigInt *b) {
+    int carry = 0, sum;
+    int i;
+
+    for (i = 0; i < a->num_digits || i < b->num_digits; i++) {
+        sum = carry;
+        if (i < a->num_digits) {
+            sum += a->digits[i];
+        }
+        if (i < b->num_digits) {
+            sum += b->digits[i];
+        }
+        a->digits[i] = sum % 10;
+        carry = sum / 10;
+    }
+    if (carry != 0) {
+        add_digit_to_bigint(a, carry);
+    }
+}
+
+void multiply_bigints(const BigInt *a, const BigInt *b, BigInt *result) {
+    int i, j, carry, prod;
+
+    result->num_digits = 0;
+
+    for (i = 0; i < b->num_digits; i++) {
+        BigInt temp;
+        init_bigint(&temp);
+        carry = 0;
+
+        // Multiply a with single digit b[i]
+        for (j = 0; j < i; j++) {
+            add_digit_to_bigint(&temp, 0);
+        }
+        for (j = 0; j < a->num_digits; j++) {
+            prod = a->digits[j] * b->digits[i] + carry;
+            add_digit_to_bigint(&temp, prod % 10);
+            carry = prod / 10;
+        }
+        if (carry != 0) {
+            add_digit_to_bigint(&temp, carry);
+        }
+
+        // Add the intermediate result to the final result
+        add_bigint_to_bigint(result, &temp);
+
+        destroy_bigint(&temp);
+    }
+}
+
+void print_bigint(const BigInt *b) {
+    int i;
+
+    if (b->num_digits == 0) {
+        printf("0");
+    } else {
+        for (i = b->num_digits - 1; i >= 0; i--) {
+            printf("%d", b->digits[i]);
+        }
+    }
+    printf("\n");
+}
+
+int is_numeric_string(char *str) {
+    int i;
+    for (i = 0; str[i] != '\0'; i++) {
+        if (!isdigit(str[i])) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main(int argc, char *argv[]) {
+    if (argc != 3) {
+        printf("Usage: %s <num1> <num2>\n", argv[0]);
+        return 1;
+    }
+
+    if (!is_numeric_string(argv[1]) || !is_numeric_string(argv[2])) {
+        printf("Error: Arguments must be valid numeric strings\n");
+        return 1;
+    }
+
+    BigInt a, b, result;
+    init_bigint(&a);
+    init_bigint(&b);
+    init_bigint(&result);
+
+    // Parse input strings into BigInts
+    int i;
+    for (i = strlen(argv[1]) - 1; i >= 0; i--) {
+        add_digit_to_bigint(&a, argv[1][i] - '0');
+    }
+    for (i = strlen(argv[2]) - 1; i >= 0; i--) {
+        add_digit_to_bigint(&b, argv[2][i] - '0');
+    }
+
+    multiply_bigints(&a, &b, &result);
+
+    // Print the result
+    print_bigint(&result);
+
+    destroy_bigint(&a);
+    destroy_bigint(&b);
+    destroy_bigint(&result);
+
+    return 0;
+}
+
+
