@@ -5,22 +5,6 @@
 /* First I am Proud of what i did here */
 
 /**
- * checkArg - this function checks if the arguments passed are 3
- * @count: is the arguments count
- *
- * Return: 0 if the check did not fail
-*/
-
-int checkArg(int count)
-{
-	if (count != 3)
-		printf("Error\n"), exit(98);
-	return (0);
-}
-
-
-
-/**
  * checkNum - this function check if the strings passed as an arguments
  * if all the strings are digits the everything is fine
  * else it print Error and exit with the code of 98
@@ -29,7 +13,7 @@ int checkArg(int count)
  *
  * Return: nothing just checking
 */
-void checkNum(char *str1, char *str2)
+int checkNum(char *str1, char *str2)
 {
 	int len1 = strlen(str1), len2 = strlen(str2), i = 0;
 
@@ -50,6 +34,8 @@ void checkNum(char *str1, char *str2)
 			exit(98);
 		}
 	}
+
+	return (0);
 }
 
 /**
@@ -84,7 +70,7 @@ char *initMemory(int size)
  * @array: is an array of zeros i initalize it above
  * Return: nothing
 */
-char *multiply(char *num1, char *num2, char *array)
+char  *multiply(char *num1, char *num2, char *array)
 {
 	int p, i, j, len1 = strlen(num1), len2 = strlen(num2);
 
@@ -115,17 +101,25 @@ char *multiply(char *num1, char *num2, char *array)
 */
 int main(int argc, char *argv[])
 {
-	int len1 = strlen(argv[1]) - 1, len2 = strlen(argv[2]) - 1;
+	int len1, len2;
 	char *array;
 
-	checkArg(argc);
-	checkNum(argv[1], argv[2]);
-	array = initMemory(len1 + len2);
+	if (argc != 3)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	else
+	{
+		len1 = strlen(argv[1]) - 1;
+		len2 = strlen(argv[2]) - 1;
 
-	printf("%s\n", multiply(argv[1], argv[2], array));
-
-	free(array);
-	return (0);
+		checkNum(argv[1], argv[2]);
+		array = initMemory(len1 + len2);
+		printf("%s\n", multiply(argv[1], argv[2], array));
+		free(array);
+		return (0);
+	}
 
 }
 
