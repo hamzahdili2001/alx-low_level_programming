@@ -13,13 +13,11 @@
 
 int checkArg(int count)
 {
-	if (count < 3 || count > 3)
-	{
-		printf("Error\n");
-		exit(98);
-	}
+	if (count != 3)
+		printf("Error\n"), exit(98);
 	return (0);
 }
+
 
 
 /**
@@ -59,7 +57,6 @@ void checkNum(char *str1, char *str2)
  * @size: is the size of length of two strings
  * Return: a pointer the the first elements of the array
 */
-
 char *initMemory(int size)
 {
 	int i;
@@ -87,7 +84,7 @@ char *initMemory(int size)
  * @array: is an array of zeros i initalize it above
  * Return: nothing
 */
-void *multiply(char *num1, char *num2, char *array)
+char *multiply(char *num1, char *num2, char *array)
 {
 	int p, i, j, len1 = strlen(num1), len2 = strlen(num2);
 
@@ -101,15 +98,12 @@ void *multiply(char *num1, char *num2, char *array)
 		}
 	}
 
+
 	for (i = 0; i < len1 + len2; i++)
 	{
 		if (array[i] != '0')
-		{
-			printf("%c", array[i]);
-		}
+			return (&array[i]);
 	}
-	printf("\n");
-
 	return ("0");
 }
 
@@ -127,8 +121,11 @@ int main(int argc, char *argv[])
 	checkArg(argc);
 	checkNum(argv[1], argv[2]);
 	array = initMemory(len1 + len2);
-	multiply(argv[1], argv[2], array);
 
+	printf("%s\n", multiply(argv[1], argv[2], array));
+
+	free(array);
 	return (0);
+
 }
 
