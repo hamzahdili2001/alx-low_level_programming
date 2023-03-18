@@ -15,7 +15,7 @@
 */
 int checkNum(char *str1, char *str2)
 {
-	int len1 = strlen(str1), len2 = strlen(str2), i = 0;
+	int len1 = strlen(str1) - 1, len2 = strlen(str2) - 1, i = 0;
 
 	for (i = 0; i < len1; i++)
 	{
@@ -109,17 +109,14 @@ int main(int argc, char *argv[])
 		printf("Error\n");
 		exit(98);
 	}
-	else
-	{
-		len1 = strlen(argv[1]) - 1;
-		len2 = strlen(argv[2]) - 1;
+	len1 = strlen(argv[1]) - 1;
+	len2 = strlen(argv[2]) - 1;
 
-		checkNum(argv[1], argv[2]);
-		array = initMemory(len1 + len2);
-		printf("%s\n", multiply(argv[1], argv[2], array));
-		free(array);
-		return (0);
-	}
+	checkNum(argv[1], argv[2]);
+	array = initMemory(len1 + len2);
+	printf("%s\n", multiply(argv[1], argv[2], array));
+	free(array);
+	return (0);
 
 }
 
