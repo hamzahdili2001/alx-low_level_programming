@@ -1,4 +1,3 @@
-
 /**
  * print_name - function that callback another function
  * Description: the function takes a pointer to the
@@ -8,5 +7,5 @@
 */
 void print_name(char *name, void (*f)(char *))
 {
-	f(name);
+	(*f)(name);
 }
