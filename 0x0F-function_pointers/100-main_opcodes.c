@@ -4,13 +4,13 @@
 #define x "%02hhx"
 
 /**
- * main - prints opcodes 
+ * main - prints opcodes
  * @argc: size of argument passed to the array
- * @argv: array of arguments 
+ * @argv: array of arguments
  * Return: 0 if the condition cool
 */
 
-int main (int argc, char *argv[])
+int main(int argc, char *argv[])
 {
 	int i, num;
 
