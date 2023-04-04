@@ -30,15 +30,5 @@ listint_t *reverse_listint(listint_t **head);
 size_t print_listint_safe(const listint_t *head);
 size_t free_listint_safe(listint_t **h);
 listint_t *find_listint_loop(listint_t *head);
-/**
- * struct custom_s - custom singly linked list
- * @ptr: pointer to data node
- * @next: pointer to next node
- */
-
-typedef struct custom_s
-{
-		void *ptr;
-		struct custom_s *next;
-} custom_s;
+size_t loop_list(const listint_t *head, const listint_t *end);
 #endif
