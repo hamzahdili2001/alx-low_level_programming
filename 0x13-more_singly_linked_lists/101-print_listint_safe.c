@@ -1,73 +1,28 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "lists.h"
-/**
- * freeLlist - frees a linked list
- * @head: head of a list.
- *
- * Return: no return.
- */
-void freeLlist(custom_s **head)
-{
-	custom_s *temp, *current;
-
-	if (head != NULL)
-	{
-		current = *head;
-		while ((temp = current) != NULL)
-		{
-			current = current->next;
-			free(temp);
-		}
-		*head = NULL;
-	}
-}
+#include <stdio.h>
 
 /**
- * print_listint_safe - prints a linked list.
- * @head: head of the list.
- * Return: length the list.
+ * print_listint_safe -  function that prints a listint_t linked list.
+ * @head: head of the list
+ * Return: the number of nodes in the list
 */
-
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t lNodes = 0;
-	custom_s *ptrList = NULL, *newNode = NULL, *checkNode = NULL;
+	size_t count = 0;
+	const listint_t *current, *loop;
 
-	while (head != NULL)
+	current = head;
+	while (current != NULL)
 	{
-		newNode = malloc(sizeof(custom_s));
-		if (newNode == NULL)
+		count++;
+		printf("[%p] %d\n", (void *)current, current->n);
+		current = current->next;
+		if (current >= loop)
 		{
-			freeLlist(&ptrList);
+			printf("-> [%p] %d\n", (void *)current, current->n);
 			exit(98);
 		}
-		newNode->ptr = (void *)head;
-		newNode->next = NULL;
-		checkNode = ptrList;
-		while (checkNode != NULL)
-		{
-			if (checkNode->ptr == (void *)head)
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				freeLlist(&ptrList);
-				return (lNodes);
-			}
-			checkNode = checkNode->next;
-		}
-		printf("[%p] %d\n", (void *)head, head->n);
-		lNodes++;
-		if (ptrList == NULL)
-			ptrList = newNode;
-		else
-		{
-			newNode->next = ptrList;
-			ptrList = newNode;
-		}
-		head = head->next;
+		loop = current;
 	}
-	freeLlist(&ptrList);
-
-	return (lNodes);
+	return (count);
 }
-
