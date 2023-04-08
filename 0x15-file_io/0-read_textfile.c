@@ -1,6 +1,6 @@
 #include "main.h"
-#include <stddef.h>
-#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 /**
  * read_textfile - reads a text file and prints it to
  *								the POSIX standard output
@@ -13,36 +13,26 @@
 
 ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *file;
+	ssize_t file;
 	char *buffer;
 	ssize_t rsize, wsize;
 
 	if (filename == NULL)
 		return (0);
 
-	file = fopen(filename, "r");
-	if (file == NULL)
+	file = open(filename, O_RDONLY);
+	if (file == -1)
 		return (0);
 
 	buffer = (char *)malloc((letters + 1) * sizeof(char));
-	if (buffer == NULL)
-	{
-		fclose(file);
-		return (0);
-	}
 
-	rsize = fread(buffer, sizeof(char), letters, file);
-	if (rsize < letters && ferror(file))
-	{
-		free(buffer);
-		fclose(file);
-		return (0);
-	}
+	rsize = read(file, buffer, letters);
 
-	buffer[rsize] = '\0';
-	wsize = fwrite(buffer, sizeof(char), rsize, stdout);
+	wsize = write(STDOUT_FILENO, buffer, rsize);
+
 	free(buffer);
-	fclose(file);
+
+	close(file);
 
 	return ((wsize == rsize) ? rsize : 0);
 }
