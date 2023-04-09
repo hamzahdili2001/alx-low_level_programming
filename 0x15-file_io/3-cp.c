@@ -26,8 +26,7 @@ void errorHandler(char *msg, int code, char *string)
 */
 int main(int argc, char *argv[])
 {
-	int file_from, file_to;
-	ssize_t rsize, wsize;
+	int file_from, file_to, rsize, wsize;
 	char buffer[BUFFER_SIZE];
 
 	if (argc != 3)
@@ -43,15 +42,17 @@ int main(int argc, char *argv[])
 	if (file_to == -1)
 		errorHandler("Error: Can't write to %s\n", 99, argv[2]);
 
-	while ((rsize = read(file_from, buffer, BUFFER_SIZE)) > 0)
-	{
+	do {
+
+		rsize = read(file_from, buffer, BUFFER_SIZE);
 		if (rsize == -1)
 			errorHandler("Error: Can't read from file %s\n", 98, argv[1]);
 
-		wsize = write(file_to, buffer, rsize);
+		wsize = write(file_to, buffer, BUFFER_SIZE);
 		if (wsize == -1)
 			errorHandler("Error: Can't write to %s\n", 99, argv[2]);
-	}
+
+		} while (rsize == BUFFER_SIZE);
 
 	if (close(file_from) == -1)
 	{
