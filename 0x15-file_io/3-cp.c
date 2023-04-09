@@ -49,8 +49,8 @@ int main(int argc, char *argv[])
 		if (wsize == -1)
 			errorHandler("Error: Can't write to %s\n", 99, argv[2]);
 
-		if (wsize != rsize)
-			errorHandler("Error: Can't write to %s\n", 99, argv[2]);
+		if (rsize == -1)
+			errorHandler("Error: Can't read from file %s\n", 99, argv[1]);
 	}
 	if (rsize == -1)
 		errorHandler("Error: Can't read from file %s", 98, argv[1]);
