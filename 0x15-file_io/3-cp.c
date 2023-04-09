@@ -42,17 +42,15 @@ int main(int argc, char *argv[])
 	if (file_to == -1)
 		errorHandler("Error: Can't write to %s\n", 99, argv[2]);
 
-	do {
-
-		rsize = read(file_from, buffer, BUFFER_SIZE);
+	while ((rsize = read(file_from, buffer, BUFFER_SIZE)) != 0)
+	{
 		if (rsize == -1)
 			errorHandler("Error: Can't read from file %s\n", 98, argv[1]);
 
-		wsize = write(file_to, buffer, BUFFER_SIZE);
+		wsize = write(file_to, buffer, rsize);
 		if (wsize == -1)
 			errorHandler("Error: Can't write to %s\n", 99, argv[2]);
-
-		} while (rsize == BUFFER_SIZE);
+	}
 
 	if (close(file_from) == -1)
 	{
