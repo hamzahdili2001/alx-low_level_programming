@@ -1,4 +1,8 @@
 #include <stdlib.h>
+/**
+ * rand - make rand numbers for the win
+ * Return: Nothing.
+*/
 
 int rand(void)
 {
