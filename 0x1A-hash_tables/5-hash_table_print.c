@@ -1,6 +1,4 @@
 #include "hash_tables.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
  * hash_table_print - function that prints a hash table.
@@ -10,9 +8,9 @@
 
 void hash_table_print(const hash_table_t *ht)
 {
-	unsigned long int i;
+	unsigned int i;
+	int f = 0;
 	hash_node_t *node;
-	int flag = 0;
 
 	if (ht == NULL)
 		return;
@@ -23,10 +21,10 @@ void hash_table_print(const hash_table_t *ht)
 		node = ht->array[i];
 		while (node != NULL)
 		{
-			if (flag == 1)
+			if (f == 1)
 				printf(", ");
 			printf("'%s': '%s'", node->key, node->value);
-			flag = 1;
+			f = 1;
 			node = node->next;
 		}
 	}
