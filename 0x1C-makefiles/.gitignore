@@ -1,5 +1,5 @@
-a.out
-m.h
-main.c
-school.c
+*.out
+*.h
+*.c
+*.o
 school
