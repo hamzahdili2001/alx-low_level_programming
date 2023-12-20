@@ -1,7 +1,18 @@
 #!/usr/bin/python3
+"""
+Defines a function that returns
+the perimeter of the island described in grid.
+"""
 
 
 def island_perimeter(grid):
+    """
+    Function calculates the perimeter of the island described in grid
+    Args:
+        grid: is a list of list of integers 0 is water zone and 1 is land zone
+    returns:
+        perimeter after Iterating through each cell in the grid
+    """
     perimeter = 0
 
     for i in range(len(grid)):
